@@ -268,7 +268,7 @@ Returns a list of [guild member](#GUILD/guild-member-object) objects that are me
 
 ## Add Guild Member % PUT /guilds/{guild.id#DOCS_GUILD/guild-object}/members/{user.id#DOCS_USER/user-object}
 
-Adds a user to the guild, provided you have a valid oauth2 access token for the user with the `guilds.join` scope. Returns a 201 Created with the [guild member](#DOCS_GUILD/guild-member-object) as the body. Fires a [Guild Member Add](#DOCS_GATEWAY/guild-member-add) Gateway event. Requires the bot to have the `CREATE_INSTANT_INVITE` permission. 
+Adds a user to the guild, provided you have a valid oauth2 access token for the user with the `guilds.join` scope. Returns a 201 Created with the [guild member](#DOCS_GUILD/guild-member-object) as the body. Fires a [Guild Member Add](#DOCS_GATEWAY/guild-member-add) Gateway event. Requires the bot to have the `CREATE_INSTANT_INVITE` permission.
 
 >info
 > All parameters to this endpoint except for `access_token` are optional.
@@ -460,3 +460,48 @@ Returns the [guild embed](#DOCS_GUILD/guild-embed-object) object. Requires the '
 ## Modify Guild Embed % PATCH /guilds/{guild.id#DOCS_GUILD/guild-object}/embed
 
 Modify a [guild embed](#DOCS_GUILD/guild-embed-object) object for the guild. All attributes may be passed in with JSON and modified. Requires the 'MANAGE_GUILD' permission. Returns the updated [guild embed](#DOCS_GUILD/guild-embed-object) object.
+
+## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/
+
+###### Audit Log Events
+
+| Event | Value | Description |
+|-------|------|-------------|
+| GUILD_UPDATE |  |  |
+| CHANNEL_CREATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+| CHANNEL_UPDATE |  |  |
+
+
+
