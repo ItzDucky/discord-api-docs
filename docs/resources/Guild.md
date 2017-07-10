@@ -461,47 +461,67 @@ Returns the [guild embed](#DOCS_GUILD/guild-embed-object) object. Requires the '
 
 Modify a [guild embed](#DOCS_GUILD/guild-embed-object) object for the guild. All attributes may be passed in with JSON and modified. Requires the 'MANAGE_GUILD' permission. Returns the updated [guild embed](#DOCS_GUILD/guild-embed-object) object.
 
-## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/
+## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/audit-log
 
-###### Audit Log Events
+Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild.
 
-| Event | Value | Description |
+### Audit Log Object
+
+| Field | Type | Description |
 |-------|------|-------------|
-| GUILD_UPDATE |  |  |
-| CHANNEL_CREATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
-| CHANNEL_UPDATE |  |  |
+| webhooks | array of [webhook object](#DOCS_WEBHOOK/webhook-object) | List of webhooks found in the audit log |
+| users | array of [user object](#DOCS_USER/user-object) | List of users found in the audit log |
+| audit_log_entries | array of [audit log entry object](#DOCS_GUILD/audit-log-entry-object) | List of audit log entires
 
+### Audit Log Entry Object
 
+###### Audit Log Entry Structure
 
+| Field | Type | Description |
+|-------|------|-------------|
+| target_id | string |  |
+| changes | array of [audit log change object](#DOCS_GUILD/audit-log-change-object) | |
+| user_id | string |
+| id | string |
+| action_type | an [audit log event](#DOCS_GUILD/audit-log-event) |
+
+### Audit Log Change Object
+
+###### Audit Log Change Structure
+
+| Field | Type | Description |
+|-------|------|-------------|
+| new_value | string/int/bool | new value of the key |
+| old_value | string/int/bool | old value of the key |
+| key | string |
+
+### Audit Log Events
+
+| Event | Value |
+|-------|------|
+| GUILD_UPDATE | 1 |
+| CHANNEL_CREATE | 10 |
+| CHANNEL_UPDATE | 11 |
+| CHANNEL_DELETE | 12 |
+| CHANNEL_OVERWRITE_CREATE | 13 |
+| CHANNEL_OVERWRITE_UPDATE | 14 |
+| CHANNEL_OVERWRITE_DELETE | 15 |
+| MEMBER_KICK | 20 |
+| MEMBER_PRUNE | 21 |
+| MEMBER_BAN_ADD | 22 |
+| MEMBER_BAN_REMOVE | 23 |
+| MEMBER_UPDATE | 24 |
+| MEMBER_ROLE_UPDATE | 25 |
+| ROLE_CREATE | 30 |
+| ROLE_UPDATE | 31 |
+| ROLE_DELETE | 32 |
+| INVITE_CREATE | 40 |
+| INVITE_UPDATE | 41 |
+| INVITE_DELETE | 42 |
+| WEBHOOK_CREATE | 50 |
+| WEBHOOK_UPDATE | 51 |
+| WEBHOOK_DELETE | 52 |
+| EMOJI_CREATE | 60 |
+| EMOJI_UPDATE | 61 |
+| EMOJI_DELETE | 62 |
+| MESSAGE_DELETE | 72 |
