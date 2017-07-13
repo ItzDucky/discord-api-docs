@@ -486,8 +486,8 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | ---- | ----- | ---------- |
 | user_id | snowflake | filter the log for a user id |
 | action_type | int  | the type of [audit log event](#DOCS_GUILD/audit-log-events)|
-| before | snowflake | filter logs before a certain time |
-| limit | int | limit how many entries are returned (default 50, minimum 1, maximum 100)
+| before | snowflake | filter the log before a certain action id |
+| limit | int | how many entries are returned (default 50, minimum 1, maximum 100)
 
 ### Audit Log Object
 
