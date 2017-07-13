@@ -19,7 +19,7 @@ Guilds in Discord represent a collection of users and channels into an isolated 
 | embed\_enabled | bool | is this guild embeddable (e.g. widget) |
 | embed\_channel\_id | snowflake | id of embedded channel |
 | verification\_level | integer | level of verification |
-| default\_message\_notifications | integer | default message notifications level |
+| default\_message\_notifications | integer | default message [notifications level](#DOCS_GUILD/default-message-notification-level) |
 | roles | array | array of [role](#DOCS_PERMISSIONS/role-object) objects |
 | emojis | array | array of [emoji](#DOCS_GUILD/emoji-object) objects |
 | features | array | array of guild features |
@@ -160,6 +160,21 @@ Represents an Offline Guild, or a Guild whose information has not been provided 
 | require_colons | bool | whether this emoji must be wrapped in colons |
 | managed | bool | whether this emoji is managed |
 
+###### Default Message Notification Level
+|Key|Value|
+|---|-----|
+|ALL_MESSAGES| 0
+| ONLY_MENTIONS | 1
+| NO_MESSAGES| 2
+|NULL | 3
+
+###### Explicit Content Filter Level
+| Level | Integer
+| ---- | ------ |
+| DISABLED | 0
+| MEMBERS_WITHOUT_ROLES | 1
+| ALL_MEMBERS | 2
+
 ## Create Guild % POST /guilds
 
 Create a new guild. Returns a [guild](#DOCS_GUILD/guild-object) object on success. Fires a [Guild Create](#DOCS_GATEWAY/guild-create) Gateway event.
@@ -175,7 +190,7 @@ Create a new guild. Returns a [guild](#DOCS_GUILD/guild-object) object on succes
 | region | string | {voice_region.id} for voice |
 | icon | string | base64 128x128 jpeg image for the guild icon |
 | verification_level | integer | guild verification level |
-| default\_message\_notifications | integer | default message notifications setting |
+| default\_message\_notifications | integer | default message [notifications setting](#DOCS_GUILD/default-message-notification-level) |
 | roles | array of [role](#DOCS_PERMISSIONS/role-object) objects | new guild roles
 | channels | array of [create guild channel](#DOCS_CHANNEL/create-guild-channel) body objects | new guild's channels
 
@@ -200,7 +215,7 @@ Modify a guild's settings. Returns the updated [guild](#DOCS_GUILD/guild-object)
 | name | string | guild name |
 | region | string | guild {voice_region.id} |
 | verification_level | integer | guild verification level |
-| default\_message\_notifications | integer | default message notifications setting |
+| default\_message\_notifications | integer | default message [notifications setting](#DOCS_GUILD/default-message-notification-level) |
 | afk\_channel\_id | snowflake | id for afk channel |
 | afk_timeout | integer | afk timeout in seconds |
 | icon | string | base64 128x128 jpeg image for the guild icon |
@@ -494,7 +509,8 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | changes | array of [audit log change object](#DOCS_GUILD/audit-log-change-object) | changes made to the target id|
 | user_id | snowflake | the user who made the changes
 | id | snowflake | id of the entry
-| action_type | an [audit log event](#DOCS_GUILD/audit-log-event) |
+| action_type | an [audit log event](#DOCS_GUILD/audit-log-event) | type of action that occured
+| options | object | additional information specific to the action type
 
 ###### Audit Log Events
 
@@ -540,45 +556,46 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 ###### Audit Log Change Key
 | Name | Type | Description |
 | ---- | --- | ----------- |
-| name | string | guild name
+| name | string | guild name changed
 | icon_hash | string | guild icon changed
 | splash_hash | string | guild invite splash page artwork changed
 | owner_id | snowflake | guild owner changed
-| region |  | voice region changed
+| region | string | voice region changed
 | afk_channel_id | snowflake | afk channel changed
 | afk_timeout | int | afk timout duration changed
-| mfa_level | int | required two-factor auth level changed
-| widget_enabled | bool | allow widgets
+| mfa_level | int | two-factor auth requirement changed
+| widget_enabled | bool | widget (bot, webhook) added or removed from a channel
+| widget_channel_id | snowflake | channel id to which a widget was added or from which one was removed
 | verification_level | int | required verification level changed
-| explicit_content_filter | | |
-| default_message_notifications | | |
+| explicit_content_filter | int | change in [whose messages](#DOCS_GUILD/explicit-content-filter-level) are scanned and deleted for explicit content in the server
+| default_message_notifications | int | default [message notification level](#DOCS_GUILD/default-message-notification-level) changed|
 | vanity_url_code | string | guild invite vanity url changed
 | position | int | text or voice channel position changed
-| topic | string | text channel topic
-| type | | |
-| bitrate | | voice channel bitrate
-| permission_overrides | | |
+| topic | string | text channel topic changed
+| type | string/int | type of entity created - can be of [channel type](#DOCS_CHANNEL/channel-types) or a string like "role"|
+| bitrate | int | voice channel bitrate changed
+| permission_overrides | array of [channel overwrite](#DOCS_CHANNEL/overwrite-object) objects| permissions on a channel changed |
 | $add | [role]() object| new role added
 | $remove | [role]() object | role removed
 | nick | string | user nickname changed
 | deaf | bool | user server deafened/undeafened
-| mute | bool | user server muted/unmuted
-| permissions | | role permissions
-| color |  | role color
-| hoist | bool | if a role displays separately from online users
-| mentioning | bool | if a role is mentionable
-| code | string | invite code
-| channel_id | snowflake | channel for invite code
-| inviter_id | snowflake | person who created invite code
-| max_users | int | max users who can use invite code
-| uses | int | number of times invite code used
-| max_age | | how long invite code lasts
-| temporary | bool | if the invite code never expires
-| application_id | snowflake |
+| mute | bool | user server muted/unmuteds
+| permissions | int | [permissions](#DOCS_PERMISSIONS/permissions-bitwise-permission-flags) for a role changed
+| color | int | role color changed
+| hoist | bool | role is now displayed/no longer displayed separate from online users
+| mentioning | bool | role is now mentionable/unmentionable
+| code | string | invite code changed
+| channel_id | snowflake | channel for invite code changed
+| inviter_id | snowflake | person who created invite code changed
+| max_users | int | max users who can use invite code changed
+| uses | int | number of times invite code used changed
+| max_age | int | how long invite code lasts changed
+| temporary | bool | invite code is temporary/never expires
+| application_id | snowflake | application id of the added or removed webhook or bot
 | avatar_hash | string | user avatar changed
-| id | | |
-| allow | bool |
-| deny | bool |
-| reason | string | reason for change
-| prune_delete_days | int |
-
+| id | snowflake | the id of the changed entity - sometimes used in conjunction with other keys
+| allow | int | a permission on a text or voice channel was allowed for a role
+| deny | int | a permission on a text or voice channel was denied for a role
+| nsfw | bool | channel nsfw restriction changed
+| reason | string | the reason for the change in the audit log
+| prune_delete_days | int | change in number of days after which inactive and role-unassigned members are kicked
