@@ -510,7 +510,8 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | user_id | snowflake | the user who made the changes
 | id | snowflake | id of the entry
 | action_type | an [audit log event](#DOCS_GUILD/audit-log-event) | type of action that occured
-| options | object | additional information specific to the action type
+| options | object | [optional audit entry information](#DOCS_GUILD/optional-audit-entry-info) for certain action types
+| reason | string | the reason for the change
 
 ###### Audit Log Events
 
@@ -543,18 +544,29 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | EMOJI_DELETE | 62 |
 | MESSAGE_DELETE | 72 |
 
+###### Optional Audit Entry Info
+| Field | Type | Description | Action Type |
+| ----- | ---- | ----------- | ---------- |
+| delete_member_days | string | number of days after which inactive members were kicked | MEMBER_PRUNE
+| members_removed | string | number of members removed by the prune | MEMBER_PRUNE
+| channel_id | snowflake | channel in which the messages were deleted | MESSAGE_DELETE
+| count | string | number of deleted messages | MESSAGE_DELETE
+| id | snowflake | id of the overwritten entity | CHANNEL_OVERWRITE_[CREATE\|UPDATE\|DELETE]
+| type | string | type of overwritten entity ("member" or "role") | CHANNEL_OVERWRITE_[CREATE\|UPDATE\|DELETE]
+| role_name | string | name of the role if type is "role"| CHANNEL_OVERWRITE_[CREATE\|UPDATE\|DELETE]
+
 ### Audit Log Change Object
 
 ###### Audit Log Change Structure
 
 | Field | Type | Description |
 |-------|------|-------------|
-| new_value | string/int/bool | new value of the key |
-| old_value | string/int/bool | old value of the key |
+| new_value | [any](#DOCS_GUILD/audit-log-change-key) | new value of the key |
+| old_value | [any](#DOCS_GUILD/audit-log-change-key) | old value of the key |
 | key | string | type of audit log [change key](#DOCS_GUILD/audit-log-change-key)
 
 ###### Audit Log Change Key
-| Name | Type | Description |
+| Name | Value Type | Description |
 | ---- | --- | ----------- |
 | name | string | guild name changed
 | icon_hash | string | guild icon changed
@@ -574,20 +586,20 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | topic | string | text channel topic changed
 | type | string/int | type of entity created - can be of [channel type](#DOCS_CHANNEL/channel-types) or a string like "role"|
 | bitrate | int | voice channel bitrate changed
-| permission_overrides | array of [channel overwrite](#DOCS_CHANNEL/overwrite-object) objects| permissions on a channel changed |
-| $add | [role]() object| new role added
-| $remove | [role]() object | role removed
+| permission_overwrites | array of [channel overwrite](#DOCS_CHANNEL/overwrite-object) objects| permissions on a channel changed |
+| $add | [role](#DOCS_PERMISSIONS/role-object) object| new role added
+| $remove | [role](#DOCS_PERMISSIONS/role-object) object | role removed
 | nick | string | user nickname changed
 | deaf | bool | user server deafened/undeafened
 | mute | bool | user server muted/unmuteds
 | permissions | int | [permissions](#DOCS_PERMISSIONS/permissions-bitwise-permission-flags) for a role changed
 | color | int | role color changed
 | hoist | bool | role is now displayed/no longer displayed separate from online users
-| mentioning | bool | role is now mentionable/unmentionable
+| mentionable | bool | role is now mentionable/unmentionable
 | code | string | invite code changed
 | channel_id | snowflake | channel for invite code changed
 | inviter_id | snowflake | person who created invite code changed
-| max_users | int | max users who can use invite code changed
+| max_uses | int | change to max number of times invite code can be used
 | uses | int | number of times invite code used changed
 | max_age | int | how long invite code lasts changed
 | temporary | bool | invite code is temporary/never expires
@@ -597,5 +609,4 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | allow | int | a permission on a text or voice channel was allowed for a role
 | deny | int | a permission on a text or voice channel was denied for a role
 | nsfw | bool | channel nsfw restriction changed
-| reason | string | the reason for the change in the audit log
 | prune_delete_days | int | change in number of days after which inactive and role-unassigned members are kicked
