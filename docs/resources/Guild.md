@@ -463,9 +463,20 @@ Modify a [guild embed](#DOCS_GUILD/guild-embed-object) object for the guild. All
 
 ## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/audit-log
 
-Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild.
+Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Requires the 'VIEW_AUDIT_LOG' permission.
+
+###### Query String Parameters
+
+|Field | Type | Description |
+| ---- | ----- | ---------- |
+| user_id | snowflake | filter the log for a user id |
+| action_type | int  | the type of [audit log event](#DOCS_GUILD/audit-log-events)|
+| before | snowflake | filter logs before a certain time |
+| limit | int | limit how many entries are returned (default 50, minimum 1, maximum 100)
 
 ### Audit Log Object
+
+###### Audit Log Object Structure
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -479,23 +490,13 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| target_id | string |  |
-| changes | array of [audit log change object](#DOCS_GUILD/audit-log-change-object) | |
-| user_id | string |
-| id | string |
+| target_id | string | id of the affected object (webhook, user, role, etc.) |
+| changes | array of [audit log change object](#DOCS_GUILD/audit-log-change-object) | changes made to the target id|
+| user_id | snowflake | the user who made the changes
+| id | snowflake | id of the entry
 | action_type | an [audit log event](#DOCS_GUILD/audit-log-event) |
 
-### Audit Log Change Object
-
-###### Audit Log Change Structure
-
-| Field | Type | Description |
-|-------|------|-------------|
-| new_value | string/int/bool | new value of the key |
-| old_value | string/int/bool | old value of the key |
-| key | string |
-
-### Audit Log Events
+###### Audit Log Events
 
 | Event | Value |
 |-------|------|
@@ -525,3 +526,59 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild.
 | EMOJI_UPDATE | 61 |
 | EMOJI_DELETE | 62 |
 | MESSAGE_DELETE | 72 |
+
+### Audit Log Change Object
+
+###### Audit Log Change Structure
+
+| Field | Type | Description |
+|-------|------|-------------|
+| new_value | string/int/bool | new value of the key |
+| old_value | string/int/bool | old value of the key |
+| key | string | type of audit log [change key](#DOCS_GUILD/audit-log-change-key)
+
+###### Audit Log Change Key
+| Name | Type | Description |
+| ---- | --- | ----------- |
+| name | string | guild name
+| icon_hash | string | guild icon changed
+| splash_hash | string | guild invite splash page artwork changed
+| owner_id | snowflake | guild owner changed
+| region |  | voice region changed
+| afk_channel_id | snowflake | afk channel changed
+| afk_timeout | int | afk timout duration changed
+| mfa_level | int | required two-factor auth level changed
+| widget_enabled | bool | allow widgets
+| verification_level | int | required verification level changed
+| explicit_content_filter | | |
+| default_message_notifications | | |
+| vanity_url_code | string | guild invite vanity url changed
+| position | int | text or voice channel position changed
+| topic | string | text channel topic
+| type | | |
+| bitrate | | voice channel bitrate
+| permission_overrides | | |
+| $add | [role]() object| new role added
+| $remove | [role]() object | role removed
+| nick | string | user nickname changed
+| deaf | bool | user server deafened/undeafened
+| mute | bool | user server muted/unmuted
+| permissions | | role permissions
+| color |  | role color
+| hoist | bool | if a role displays separately from online users
+| mentioning | bool | if a role is mentionable
+| code | string | invite code
+| channel_id | snowflake | channel for invite code
+| inviter_id | snowflake | person who created invite code
+| max_users | int | max users who can use invite code
+| uses | int | number of times invite code used
+| max_age | | how long invite code lasts
+| temporary | bool | if the invite code never expires
+| application_id | snowflake |
+| avatar_hash | string | user avatar changed
+| id | | |
+| allow | bool |
+| deny | bool |
+| reason | string | reason for change
+| prune_delete_days | int |
+
