@@ -549,8 +549,9 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | MESSAGE_DELETE | 72 |
 
 ###### Optional Audit Entry Info
+
 | Field | Type | Description | Action Type |
-| ----- | ---- | ----------- | ---------- |
+| ----- | ---- | ----------- | ----------- |
 | delete_member_days | string | number of days after which inactive members were kicked | MEMBER_PRUNE
 | members_removed | string | number of members removed by the prune | MEMBER_PRUNE
 | channel_id | snowflake | channel in which the messages were deleted | MESSAGE_DELETE
