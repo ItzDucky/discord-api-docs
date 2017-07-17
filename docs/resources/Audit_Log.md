@@ -97,8 +97,8 @@ Whenever an admin action is performed on the API, an entry is added to the respe
 | explicit_content_filter | [guild](#DOCS_GUILD/guild-object) | int | change in [whose messages](#DOCS_GUILD/explicit-content-filter-level) are scanned and deleted for explicit content in the server
 | default_message_notifications | [guild](#DOCS_GUILD/guild-object) | int | default [message notification level](#DOCS_GUILD/default-message-notification-level) changed|
 | vanity_url_code | [guild](#DOCS_GUILD/guild-object) | string | guild invite vanity url changed
-| $add | [guild](#DOCS_GUILD/guild-object) | [role](#DOCS_PERMISSIONS/role-object) object| new role added
-| $remove | [guild](#DOCS_GUILD/guild-object) | [role](#DOCS_PERMISSIONS/role-object) object | role removed
+| $add | [guild](#DOCS_GUILD/guild-object) | array of [role](#DOCS_PERMISSIONS/role-object) objects | new role added
+| $remove | [guild](#DOCS_GUILD/guild-object) | array of [role](#DOCS_PERMISSIONS/role-object) objects | role removed
 | prune_delete_days | [guild](#DOCS_GUILD/guild-objects) | int | change in number of days after which inactive and role-unassigned members are kicked
 | widget_enabled | [channel](#DOCS_CHANNEL/guild-channel-object) | bool | widget (bot, webhook) added or removed from a channel
 | widget_channel_id | [channel](#DOCS_CHANNEL/guild-channel-object) | snowflake | channel id to which a widget was added or from which one was removed
