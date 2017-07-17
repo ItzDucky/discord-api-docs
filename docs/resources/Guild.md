@@ -161,6 +161,7 @@ Represents an Offline Guild, or a Guild whose information has not been provided 
 | managed | bool | whether this emoji is managed |
 
 ###### Default Message Notification Level
+
 | Key | Value |
 | --- | ----- |
 | ALL_MESSAGES | 0
@@ -169,6 +170,7 @@ Represents an Offline Guild, or a Guild whose information has not been provided 
 | NULL | 3
 
 ###### Explicit Content Filter Level
+
 | Level | Integer
 | ---- | ------ |
 | DISABLED | 0
@@ -598,11 +600,11 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | nsfw | [channel](#DOCS_CHANNEL/guild-channel-object) | bool | channel nsfw restriction changed
 | application_id | [channel](#DOCS_CHANNEL/guild-channel-object)| snowflake | application id of the added or removed webhook or bot
 | permissions | [role](#DOCS_GUILD/role-object)| int | [permissions](#DOCS_PERMISSIONS/permissions-bitwise-permission-flags) for a role changed
-| color | [role](#DOCS_GUILD/role-object) | int | role color changed
-| hoist | [role](#DOCS_GUILD/role-object) | bool | role is now displayed/no longer displayed separate from online users
-| mentionable | [role](#DOCS_GUILD/role-object) | bool | role is now mentionable/unmentionable
-| allow | [role](#DOCS_GUILD/role-object) | int | a permission on a text or voice channel was allowed for a role
-| deny | [role](#DOCS_GUILD/role-object) | int | a permission on a text or voice channel was denied for a role
+| color | [role](#DOCS_PERMISSIONS/role-object) | int | role color changed
+| hoist | [role](#DOCS_PERMISSIONS/role-object) | bool | role is now displayed/no longer displayed separate from online users
+| mentionable | [role](#DOCS_PERMISSIONS/role-object) | bool | role is now mentionable/unmentionable
+| allow | [role](#DOCS_PERMISSIONS/role-object) | int | a permission on a text or voice channel was allowed for a role
+| deny | [role](#DOCS_PERMISSIONS/role-object) | int | a permission on a text or voice channel was denied for a role
 | code | [invite](#DOCS_INVITE/invite-object) | string | invite code changed
 | channel_id | [invite](#DOCS_INVITE/invite-channel-object) | snowflake | channel for invite code changed
 | inviter_id | [invite](#DOCS_INVITE/invite-metadata-object) | snowflake | person who created invite code changed
