@@ -556,9 +556,9 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | members_removed | string | number of members removed by the prune | MEMBER_PRUNE
 | channel_id | snowflake | channel in which the messages were deleted | MESSAGE_DELETE
 | count | string | number of deleted messages | MESSAGE_DELETE
-| id | snowflake | id of the overwritten entity | CHANNEL_OVERWRITE_[CREATE\|UPDATE\|DELETE]
-| type | string | type of overwritten entity ("member" or "role") | CHANNEL_OVERWRITE_[CREATE\|UPDATE\|DELETE]
-| role_name | string | name of the role if type is "role"| CHANNEL_OVERWRITE_[CREATE\|UPDATE\|DELETE]
+| id | snowflake | id of the overwritten entity | CHANNEL\_OVERWRITE\_(CREATE/UPDATE/DELETE)
+| type | string | type of overwritten entity ("member" or "role") | CHANNEL\_OVERWRITE\_(CREATE/UPDATE/DELETE)
+| role_name | string | name of the role if type is "role"| CHANNEL\_OVERWRITE\_(CREATE/UPDATE/DELETE)
 
 ### Audit Log Change Object
 
