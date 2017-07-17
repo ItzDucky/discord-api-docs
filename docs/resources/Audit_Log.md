@@ -4,19 +4,6 @@
 
 Whenever an admin action is performed on the API, an entry is added to the respective guild's audit log. You can specify the reason for the action in the audit log by attaching the `X-Audit-Log-Reason` request header. This header supports url encoded utf8 characters.
 
-## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/audit-log
-
-Returns an an [audit log object](#DOCS_AUDIT_LOG/audit-log-object) for the guild. Requires the 'VIEW_AUDIT_LOG' permission.
-
-###### Query String Parameters
-
-|Field | Type | Description |
-| ---- | ----- | ---------- |
-| user_id | snowflake | filter the log for a user id |
-| action_type | int  | the type of [audit log event](#DOCS_AUDIT_LOG/audit-log-events)|
-| before | snowflake | filter the log before a certain entry id |
-| limit | int | how many entries are returned (default 50, minimum 1, maximum 100)
-
 ### Audit Log Object
 
 ###### Audit Log Object Structure
@@ -140,3 +127,17 @@ Returns an an [audit log object](#DOCS_AUDIT_LOG/audit-log-object) for the guild
 | avatar_hash | [user](#DOCS_USER/user-object) | string | user avatar changed
 | id | any | snowflake | the id of the changed entity - sometimes used in conjunction with other keys
 | type | any | string/int | type of entity created - can be of [channel type](#DOCS_CHANNEL/channel-types) or a string like "role"|
+
+
+## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/audit-log
+
+Returns an an [audit log object](#DOCS_AUDIT_LOG/audit-log-object) for the guild. Requires the 'VIEW_AUDIT_LOG' permission.
+
+###### Query String Parameters
+
+|Field | Type | Description |
+| ---- | ----- | ---------- |
+| user_id | snowflake | filter the log for a user id |
+| action_type | int  | the type of [audit log event](#DOCS_AUDIT_LOG/audit-log-events)|
+| before | snowflake | filter the log before a certain entry id |
+| limit | int | how many entries are returned (default 50, minimum 1, maximum 100)
