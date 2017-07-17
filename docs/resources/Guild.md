@@ -476,6 +476,10 @@ Returns the [guild embed](#DOCS_GUILD/guild-embed-object) object. Requires the '
 
 Modify a [guild embed](#DOCS_GUILD/guild-embed-object) object for the guild. All attributes may be passed in with JSON and modified. Requires the 'MANAGE_GUILD' permission. Returns the updated [guild embed](#DOCS_GUILD/guild-embed-object) object.
 
+# Audit Logs
+
+Whenever an admin action is performed on the API, an entry is added to the respective guild's audit log. You can specify the reason for the action in the audit log by attaching the `X-Audit-Log-Reason` request header. This header supports url encoded utf8 characters.
+
 ## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/audit-log
 
 Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Requires the 'VIEW_AUDIT_LOG' permission.
