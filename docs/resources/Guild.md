@@ -552,13 +552,13 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 
 | Field | Type | Description | Action Type |
 | ----- | ---- | ----------- | ----------- |
-| delete_member_days | string | number of days after which inactive members were kicked | MEMBER_PRUNE
-| members_removed | string | number of members removed by the prune | MEMBER_PRUNE
-| channel_id | snowflake | channel in which the messages were deleted | MESSAGE_DELETE
-| count | string | number of deleted messages | MESSAGE_DELETE
-| id | snowflake | id of the overwritten entity | CHANNEL\_OVERWRITE\_(CREATE/UPDATE/DELETE)
-| type | string | type of overwritten entity ("member" or "role") | CHANNEL\_OVERWRITE\_(CREATE/UPDATE/DELETE)
-| role_name | string | name of the role if type is "role"| CHANNEL\_OVERWRITE\_(CREATE/UPDATE/DELETE)
+| delete_member_days | string | number of days after which inactive members were kicked | 21
+| members_removed | string | number of members removed by the prune | 21
+| channel_id | snowflake | channel in which the messages were deleted | 72
+| count | string | number of deleted messages | 72
+| id | snowflake | id of the overwritten entity | 13, 14, 15
+| type | string | type of overwritten entity ("member" or "role") | 13, 14, 15
+| role_name | string | name of the role if type is "role"| 13, 14, 15
 
 ### Audit Log Change Object
 
@@ -571,6 +571,7 @@ Returns an an [audit log object](#DOCS_GUILD/audit-log-object) for the guild. Re
 | key | string | type of audit log [change key](#DOCS_GUILD/audit-log-change-key)
 
 ###### Audit Log Change Key
+
 | Name | Object Changed | Type | Description |
 | ---- | ------ | ---------- | ----------- |
 | name | [guild](#DOCS_GUILD/guild-object)| string | name changed
