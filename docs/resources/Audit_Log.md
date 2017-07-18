@@ -63,13 +63,13 @@ Whenever an admin action is performed on the API, an entry is added to the respe
 
 | Field | Type | Description | Action Type |
 | ----- | ---- | ----------- | ----------- |
-| delete_member_days | string | number of days after which inactive members were kicked | 21
-| members_removed | string | number of members removed by the prune | 21
-| channel_id | snowflake | channel in which the messages were deleted | 72
-| count | string | number of deleted messages | 72
-| id | snowflake | id of the overwritten entity | 13, 14, 15
-| type | string | type of overwritten entity ("member" or "role") | 13, 14, 15
-| role_name | string | name of the role if type is "role"| 13, 14, 15
+| delete_member_days | string | number of days after which inactive members were kicked | 21 |
+| members_removed | string | number of members removed by the prune | 21 |
+| channel_id | snowflake | channel in which the messages were deleted | 72 |
+| count | string | number of deleted messages | 72 |
+| id | snowflake | id of the overwritten entity | 13, 14, 15 |
+| type | string | type of overwritten entity ("member" or "role") | 13, 14, 15 |
+| role_name | string | name of the role if type is "role"| 13, 14, 15 |
 
 ### Audit Log Change Object
 
@@ -79,54 +79,54 @@ Whenever an admin action is performed on the API, an entry is added to the respe
 |-------|------|-------------|
 | new_value | [any](#DOCS_AUDIT_LOG/audit-log-change-key) | new value of the key |
 | old_value | [any](#DOCS_AUDIT_LOG/audit-log-change-key) | old value of the key |
-| key | string | type of audit log [change key](#DOCS_AUDIT_LOG/audit-log-change-key)
+| key | string | type of audit log [change key](#DOCS_AUDIT_LOG/audit-log-change-key) |
 
 ###### Audit Log Change Key
 
 | Name | Object Changed | Type | Description |
 | ---- | ------ | ---------- | ----------- |
-| name | [guild](#DOCS_GUILD/guild-object)| string | name changed
-| icon_hash | [guild](#DOCS_GUILD/guild-object) | string | icon changed
-| splash_hash | [guild](#DOCS_GUILD/guild-object) | string | invite splash page artwork changed
-| owner_id | [guild](#DOCS_GUILD/guild-object) | snowflake | owner changed
-| region | [guild](#DOCS_GUILD/guild-object) | string | region changed
-| afk_channel_id | [guild](#DOCS_GUILD/guild-object) | snowflake | afk channel changed
-| afk_timeout | [guild](#DOCS_GUILD/guild-object) | int | afk timout duration changed
-| mfa_level | [guild](#DOCS_GUILD/guild-object) | int | two-factor auth requirement changed
-| verification_level | [guild](#DOCS_GUILD/guild-object) | int | required verification level changed
-| explicit_content_filter | [guild](#DOCS_GUILD/guild-object) | int | change in [whose messages](#DOCS_GUILD/explicit-content-filter-level) are scanned and deleted for explicit content in the server
-| default_message_notifications | [guild](#DOCS_GUILD/guild-object) | int | default [message notification level](#DOCS_GUILD/default-message-notification-level) changed|
-| vanity_url_code | [guild](#DOCS_GUILD/guild-object) | string | guild invite vanity url changed
-| $add | [guild](#DOCS_GUILD/guild-object) | array of [role](#DOCS_PERMISSIONS/role-object) objects | new role added
-| $remove | [guild](#DOCS_GUILD/guild-object) | array of [role](#DOCS_PERMISSIONS/role-object) objects | role removed
-| prune_delete_days | [guild](#DOCS_GUILD/guild-objects) | int | change in number of days after which inactive and role-unassigned members are kicked
-| widget_enabled | [channel](#DOCS_CHANNEL/guild-channel-object) | bool | widget (bot, webhook) added or removed from a channel
-| widget_channel_id | [channel](#DOCS_CHANNEL/guild-channel-object) | snowflake | channel id to which a widget was added or from which one was removed
-| position | [channel](#DOCS_CHANNEL/guild-channel-object) | int | text or voice channel position changed
-| topic | [channel](#DOCS_CHANNEL/guild-channel-object) | string | text channel topic changed
-| bitrate | [channel](#DOCS_CHANNEL/guild-channel-object) | int | voice channel bitrate changed
+| name | [guild](#DOCS_GUILD/guild-object)| string | name changed |
+| icon_hash | [guild](#DOCS_GUILD/guild-object) | string | icon changed |
+| splash_hash | [guild](#DOCS_GUILD/guild-object) | string | invite splash page artwork changed |
+| owner_id | [guild](#DOCS_GUILD/guild-object) | snowflake | owner changed |
+| region | [guild](#DOCS_GUILD/guild-object) | string | region changed |
+| afk_channel_id | [guild](#DOCS_GUILD/guild-object) | snowflake | afk channel changed |
+| afk_timeout | [guild](#DOCS_GUILD/guild-object) | int | afk timout duration changed |
+| mfa_level | [guild](#DOCS_GUILD/guild-object) | int | two-factor auth requirement changed |
+| verification_level | [guild](#DOCS_GUILD/guild-object) | int | required verification level changed |
+| explicit_content_filter | [guild](#DOCS_GUILD/guild-object) | int | change in [whose messages] |(#DOCS_GUILD/explicit-content-filter-level) are scanned and deleted for explicit content in the server |
+| default_message_notifications | [guild](#DOCS_GUILD/guild-object) | int | default [message notification level](#DOCS_GUILD/default-message-notification-level) changed |
+| vanity_url_code | [guild](#DOCS_GUILD/guild-object) | string | guild invite vanity url changed |
+| $add | [guild](#DOCS_GUILD/guild-object) | array of [role](#DOCS_PERMISSIONS/role-object) objects | new role added |
+| $remove | [guild](#DOCS_GUILD/guild-object) | array of [role](#DOCS_PERMISSIONS/role-object) objects | role removed |
+| prune_delete_days | [guild](#DOCS_GUILD/guild-objects) | int | change in number of days after which inactive and role-unassigned members are kicked |
+| widget_enabled | [channel](#DOCS_CHANNEL/guild-channel-object) | bool | widget (bot, webhook) added or removed from a channel |
+| widget_channel_id | [channel](#DOCS_CHANNEL/guild-channel-object) | snowflake | channel id to which a widget was added or from which one was removed |
+| position | [channel](#DOCS_CHANNEL/guild-channel-object) | int | text or voice channel position changed |
+| topic | [channel](#DOCS_CHANNEL/guild-channel-object) | string | text channel topic changed |
+| bitrate | [channel](#DOCS_CHANNEL/guild-channel-object) | int | voice channel bitrate changed |
 | permission_overwrites | [channel](#DOCS_CHANNEL/guild-channel-object) | array of [channel overwrite](#DOCS_CHANNEL/overwrite-object) objects| permissions on a channel changed |
-| nsfw | [channel](#DOCS_CHANNEL/guild-channel-object) | bool | channel nsfw restriction changed
-| application_id | [channel](#DOCS_CHANNEL/guild-channel-object)| snowflake | application id of the added or removed webhook or bot
-| permissions | [role](#DOCS_GUILD/role-object)| int | [permissions](#DOCS_PERMISSIONS/permissions-bitwise-permission-flags) for a role changed
-| color | [role](#DOCS_PERMISSIONS/role-object) | int | role color changed
-| hoist | [role](#DOCS_PERMISSIONS/role-object) | bool | role is now displayed/no longer displayed separate from online users
-| mentionable | [role](#DOCS_PERMISSIONS/role-object) | bool | role is now mentionable/unmentionable
-| allow | [role](#DOCS_PERMISSIONS/role-object) | int | a permission on a text or voice channel was allowed for a role
-| deny | [role](#DOCS_PERMISSIONS/role-object) | int | a permission on a text or voice channel was denied for a role
-| code | [invite](#DOCS_INVITE/invite-object) | string | invite code changed
-| channel_id | [invite](#DOCS_INVITE/invite-channel-object) | snowflake | channel for invite code changed
-| inviter_id | [invite](#DOCS_INVITE/invite-metadata-object) | snowflake | person who created invite code changed
-| max_uses | [invite](#DOCS_INVITE/invite-metadata-object) | int | change to max number of times invite code can be used
-| uses | [invite](#DOCS_INVITE/invite-metadata-object) | int | number of times invite code used changed
-| max_age | [invite](#DOCS_INVITE/invite-metadata-object) | int | how long invite code lasts changed
-| temporary | [invite](#DOCS_INVITE/invite-metadata-object) | bool | invite code is temporary/never expires
-| deaf | [user](#DOCS_USER/user-object) | bool | user server deafened/undeafened
-| mute | [user](#DOCS_USER/user-object) | bool | user server muted/unmuteds
-| nick | [user](#DOCS_USER/user-object) | string | user nickname changed
-| avatar_hash | [user](#DOCS_USER/user-object) | string | user avatar changed
-| id | any | snowflake | the id of the changed entity - sometimes used in conjunction with other keys
-| type | any | string/int | type of entity created - can be of [channel type](#DOCS_CHANNEL/channel-types) or a string like "role"|
+| nsfw | [channel](#DOCS_CHANNEL/guild-channel-object) | bool | channel nsfw restriction changed |
+| application_id | [channel](#DOCS_CHANNEL/guild-channel-object)| snowflake | application id of the added or removed webhook or bot |
+| permissions | [role](#DOCS_GUILD/role-object)| int | [permissions](#DOCS_PERMISSIONS/permissions-bitwise-permission-flags) for a role changed |
+| color | [role](#DOCS_PERMISSIONS/role-object) | int | role color changed |
+| hoist | [role](#DOCS_PERMISSIONS/role-object) | bool | role is now displayed/no longer displayed separate from online users |
+| mentionable | [role](#DOCS_PERMISSIONS/role-object) | bool | role is now mentionable/unmentionable |
+| allow | [role](#DOCS_PERMISSIONS/role-object) | int | a permission on a text or voice channel was allowed for a role |
+| deny | [role](#DOCS_PERMISSIONS/role-object) | int | a permission on a text or voice channel was denied for a role |
+| code | [invite](#DOCS_INVITE/invite-object) | string | invite code changed |
+| channel_id | [invite](#DOCS_INVITE/invite-channel-object) | snowflake | channel for invite code changed |
+| inviter_id | [invite](#DOCS_INVITE/invite-metadata-object) | snowflake | person who created invite code changed |
+| max_uses | [invite](#DOCS_INVITE/invite-metadata-object) | int | change to max number of times invite code can be used |
+| uses | [invite](#DOCS_INVITE/invite-metadata-object) | int | number of times invite code used changed |
+| max_age | [invite](#DOCS_INVITE/invite-metadata-object) | int | how long invite code lasts changed |
+| temporary | [invite](#DOCS_INVITE/invite-metadata-object) | bool | invite code is temporary/never expires |
+| deaf | [user](#DOCS_USER/user-object) | bool | user server deafened/undeafened |
+| mute | [user](#DOCS_USER/user-object) | bool | user server muted/unmuteds |
+| nick | [user](#DOCS_USER/user-object) | string | user nickname changed |
+| avatar_hash | [user](#DOCS_USER/user-object) | string | user avatar changed |
+| id | any | snowflake | the id of the changed entity - sometimes used in conjunction with other keys |
+| type | any | string/int | type of entity created - can be of [channel type](#DOCS_CHANNEL/channel-types) or a string like "role" |
 
 
 ## Get Guild Audit Log % GET /guilds/{guild.id#DOCS_GUILD/guild-object}/audit-log
@@ -138,6 +138,6 @@ Returns an an [audit log object](#DOCS_AUDIT_LOG/audit-log-object) for the guild
 |Field | Type | Description |
 | ---- | ----- | ---------- |
 | user_id | snowflake | filter the log for a user id |
-| action_type | int  | the type of [audit log event](#DOCS_AUDIT_LOG/audit-log-events)|
+| action_type | int  | the type of [audit log event](#DOCS_AUDIT_LOG/audit-log-events) |
 | before | snowflake | filter the log before a certain entry id |
-| limit | int | how many entries are returned (default 50, minimum 1, maximum 100)
+| limit | int | how many entries are returned (default 50, minimum 1, maximum 100) |
